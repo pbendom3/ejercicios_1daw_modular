@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Ejercicio4 {
 
+    static Scanner teclado = new Scanner(System.in);
+
     static void main() {
 
         double recaudacion[] = introducirRecaudacion();
@@ -12,12 +14,22 @@ public class Ejercicio4 {
             System.out.println(reca + " ");
         }
 
+        System.out.println(diaMaximo(recaudacion));
+        double media = media(recaudacion);
+        System.out.println(media);
+        double domingo = domingo(recaudacion);
+        System.out.println(domingo);
+
+        if (domingo > media){
+            System.out.println("SI");
+        }else{
+            System.out.println("NO");
+        }
+
 
     }
 
     public static double[] introducirRecaudacion(){
-
-        Scanner teclado = new Scanner(System.in);
 
         double recaudacion[] =  new double[6];
 
@@ -53,25 +65,37 @@ public class Ejercicio4 {
 
             case 0:
                 return "MARTES";
-                break;
             case 1:
                 return "MIÉRCOLES";
-                break;
             case 2:
                 return "JUEVES";
-                break;
             case 3:
                 return "VIERNES";
-                break;
             case 4:
                 return "SÁBADO";
-                break;
             case 5:
                 return "DOMINGO";
-                break;
         }
 
         return " ";
+    }
+
+    public static double media (double recaudacion[]){
+
+        int acumulador = 0;
+
+        for (int i = 0; i < recaudacion.length; i++) {
+            acumulador += recaudacion[i];
+        }
+
+        return (acumulador/recaudacion.length);
+
+    }
+
+    public static double domingo (double recaudacion[]){
+
+        return recaudacion[recaudacion.length-1];
+
     }
 
 }
