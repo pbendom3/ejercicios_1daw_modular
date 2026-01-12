@@ -50,6 +50,11 @@ public class Recursividad {
 
         del_reves_char_sin_vector(frase.length()-1);
 
+        System.out.println();
+        System.out.println(esBinario(5454));
+
+        System.out.println(aBinario(4));
+
     }
 
     public static void imprimir (int num){
@@ -124,6 +129,34 @@ public class Recursividad {
         if (posicion>=0){
             System.out.print(frase.charAt(posicion));
             del_reves_char(posicion-1);
+        }
+
+    }
+
+    public static boolean esBinario (int numero){
+
+        if (numero > 9){
+            if (numero % 10 != 0 && numero % 10 != 1){
+                return false;
+            }else{
+                return esBinario(numero/10);
+            }
+        }else{
+            if (numero == 0 || numero == 1){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+    }
+
+    public static String aBinario (int numero){
+
+        if (numero == 0 || numero == 1){
+            return Integer.toString(numero);
+        }else{
+            return aBinario(numero/2)+numero%2;
         }
 
     }
